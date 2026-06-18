@@ -1,4 +1,8 @@
-$workspaceRoot = Split-Path $PSScriptRoot -Parent
+$workspaceRoot = $PSScriptRoot
+$scriptDirName = Split-Path $PSScriptRoot -Leaf
+if ($scriptDirName -eq "outputs") {
+    $workspaceRoot = Split-Path $PSScriptRoot -Parent
+}
 $pidFile = Join-Path $workspaceRoot "work\\order_analysis_v1\\service.pid"
 
 if (-not (Test-Path -LiteralPath $pidFile)) {

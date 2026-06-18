@@ -7,7 +7,11 @@ param(
     [switch]$Background
 )
 
-$workspaceRoot = Split-Path $PSScriptRoot -Parent
+$workspaceRoot = $PSScriptRoot
+$scriptDirName = Split-Path $PSScriptRoot -Leaf
+if ($scriptDirName -eq "outputs") {
+    $workspaceRoot = Split-Path $PSScriptRoot -Parent
+}
 $scriptPath = Join-Path $PSScriptRoot "order_analysis_v1.py"
 $stateDir = Join-Path $workspaceRoot "work\\order_analysis_v1"
 $pidFile = Join-Path $stateDir "service.pid"

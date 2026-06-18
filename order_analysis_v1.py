@@ -19,7 +19,7 @@ from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
 
 SCRIPT_PATH = pathlib.Path(__file__).resolve()
-WORKSPACE_ROOT = SCRIPT_PATH.parent.parent
+WORKSPACE_ROOT = SCRIPT_PATH.parent.parent if SCRIPT_PATH.parent.name == "outputs" else SCRIPT_PATH.parent
 DEFAULT_STATE_DIR = WORKSPACE_ROOT / "work" / "order_analysis_v1"
 DEFAULT_DB_PATH = DEFAULT_STATE_DIR / "order_analysis_v1.sqlite3"
 DEFAULT_UPLOAD_DIR = DEFAULT_STATE_DIR / "imports"
